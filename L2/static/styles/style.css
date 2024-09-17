@@ -1,0 +1,18 @@
+.kot {
+  color: brown;
+}
+
+.auto {
+  color: blue;
+}
+
+.drzewo {
+  color: green;
+}
+
+.header {
+  width: 100vw;
+  height: 100px;
+  background-color: gray;
+  color: blue;
+}
