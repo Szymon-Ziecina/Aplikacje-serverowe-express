@@ -15,7 +15,7 @@ app.listen(PORT, function () {
 });
 
 app.get("/", function (req, res) {
-  res.sendFile(__dirname + "/static/pages/formularz-3b.html");
+  res.sendFile(__dirname + "/static/pages/formularz-kółka.html");
 });
 
 app.post("/", function (req, res) {
