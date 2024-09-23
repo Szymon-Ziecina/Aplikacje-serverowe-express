@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      button {
+        width: 100px;
+        height: 100px;
+        margin-top: 25px;
+        border-radius: 50%;
+        border: none;
+        text-align: center;
+        background-color: red;
+        color: white;
+      }
+    </style>
+  </head>
+  <body>
+    <form>
+      <input type="number" name="liczba1" id="inp1" value="100" />
+      <input type="number" name="liczba2" id="inp2" value="200" />
+      <select name="działanie" id="sel">
+        <option value="suma">suma</option>
+        <option value="różnica">różnica</option>
+        <option value="iloczyn">iloczyn</option>
+        <option value="iloraz">iloraz</option>
+        <option value="wszystkie">wszystkie działania</option>
+      </select>
+      <br />
+      <button id="btn">klik</button>
+    </form>
+    <script>
+      const guzior = document.getElementById("btn");
+      const liczba1 = document.getElementById("inp1");
+      const liczba2 = document.getElementById("inp2");
+      const działanie = document.getElementById("sel");
+
+      guzior.onclick = (e) => {
+        e.preventDefault();
+        const data = JSON.stringify({
+          liczba1: liczba1.value,
+          liczba2: liczba2.value,
+          działanie: działanie.value,
+        });
+        const options = {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: data,
+        };
+        fetch("/", options)
+          .then((response) => response.json())
+          .then((dataFromServer) =>
+            alert(JSON.stringify(dataFromServer, null, 5))
+          )
+          .catch((error) => console.log(error));
+      };
+    </script>
+  </body>
+</html>
