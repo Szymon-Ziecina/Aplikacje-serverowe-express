@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+  </head>
+  <body>
+    <div class="flex text-white">
+      <div class="w-96">
+        <div class="h-10 text-center w-full bg-gray-600">pozycja</div>
+        <div class="w-full aspect-square bg-purple-600" id="position"></div>
+      </div>
+      <div class="w-96">
+        <div class="h-10 text-center w-full bg-gray-500">opóźnienie</div>
+        <div class="w-full aspect-square bg-gray-800" id="delay"></div>
+      </div>
+    </div>
+    <script>
+      const positionDiv = document.querySelector("#position");
+      const delayDiv = document.querySelector("#delay");
+
+      positionDiv.onclick = (e) => {
+        const position = document.createElement("div");
+        const posX = e.clientX;
+        const posY = e.clientY - 40;
+        const data = JSON.stringify({
+          x: posX,
+          y: posY,
+        });
+        const options = {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: data,
+        };
+        const resdata = fetch("/", options)
+          .then((res) => res.json())
+          .catch((err) => console.log(err));
+        console.log(resdata);
+      };
+    </script>
+  </body>
+</html>
+ 

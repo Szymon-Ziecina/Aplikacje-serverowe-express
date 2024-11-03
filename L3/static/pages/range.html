@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <input type="range" id="range-user" min="0" max="100" /><br />
+    <input
+      type="range"
+      readonly
+      id="range-server"
+      min="0"
+      max="100"
+      value="50"
+    />
+    <script>
+      const userRange = document.querySelector("#range-user");
+      const serverRange = document.querySelector("#range-server");
+
+      userRange.oninput = () => {
+        const data = JSON.stringify({
+          userRange: userRange.value,
+        });
+
+        const options = {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: data,
+        };
+        fetch("/", options)
+          .then((res) => res.json())
+          .then((data) => (serverRange.value = data.serverRange))
+          .catch((error) => console.log(error));
+      };
+    </script>
+  </body>
+</html>
