@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+  </head>
+  <body>
+    <div class="flex flex-col gap-4 p-4">
+      <div class="flex gap-4 text-white">
+        <div class="bg-blue-600 w-fit rounded-md p-2">
+          <input type="file" id="imgInput" />
+        </div>
+        <button class="bg-blue-600 w-fit rounded-md p-2" id="guzior">
+          upload
+        </button>
+      </div>
+      <img src="" alt="zdjecie" id="img" class="max-w-96 bg-purple-500" />
+    </div>
+    <script>
+      const guzior = document.querySelector("#guzior");
+      const imgInput = document.querySelector("#imgInput");
+      const img = document.querySelector("#img");
+
+      guzior.onclick = (e) => {
+        e.preventDefault();
+        const fd = new FormData();
+
+        fd.append("file", imgInput.files[0]);
+
+        const body = fd;
+
+        fetch("/uploadFile", { method: "post", body })
+          .then((response) => response.json())
+          .then(
+            (data) =>
+              (img.src = `../upload/${data.file.path
+                .replace(/\\/g, "/")
+                .split("/")
+                .pop()}`)
+          )
+          .catch((error) => console.log(error));
+      };
+    </script>
+  </body>
+</html>

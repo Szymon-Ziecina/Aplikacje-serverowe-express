@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+  </head>
+  <body>
+    <form
+      enctype="multipart/form-data"
+      method="post"
+      action="/uploadFile"
+      class="w-4/5 bg-blue-500 flex flex-col gap-2 p-4"
+    >
+      <input
+        type="file"
+        required
+        multiple
+        accept="image/*"
+        name="imagetoupload"
+      />
+      <button type="submit" class="bg-white w-fit">Submit</button>
+    </form>
+  </body>
+</html>

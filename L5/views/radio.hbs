@@ -1,0 +1,14 @@
+<h1 class="text-3xl font-bold underline">{{subject}}</h1>
+<form action="/handleRadio" method="get" class="flex flex-col gap-2">
+  {{#each fields}}
+    <div>
+      <input type="radio" name="radio" id="{{name}}" value="{{name}}" />
+      <label for="{{name}}">{{name}}</label>
+    </div>
+  {{/each}}
+  <input
+    type="submit"
+    value="Submit"
+    class="bg-gray-300 border-2 border-blue-500 text-blue-500 px-5 py-2 w-fit"
+  />
+</form>
