@@ -1,7 +1,7 @@
 const express = require("express");
 const formidable = require("formidable");
 const app = express();
-const PORT = 3000;
+const PORT = 3001;
 
 app.use(express.static(__dirname + "/static/"));
 app.use(express.json());
@@ -20,6 +20,8 @@ app.post("/uploadFile", (req, res) => {
   form.multiples = true;
   form.uploadDir = __dirname + "/static/upload/";
   form.keepExtensions = true;
+
+  console.log(req.body);
 
   form.parse(req, (err, fields, files) => {
     console.log(files);

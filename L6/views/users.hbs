@@ -1,0 +1,57 @@
+<div class="flex flex-col gap-4">
+  <nav class="w-full bg-gray-900 px-4 py-2 text-2xl font-semibold text-red-200">
+    Users
+  </nav>
+  <h1 class="text-4xl px-4">02: nedb - insert, sort</h1>
+  <form class="flex gap-4 px-4">
+    <input
+      type="text"
+      placeholder="login"
+      class="bg-transparent border-2 border-gray-300 rounded-md"
+      name="login"
+      id="login"
+    /><input
+      type="password"
+      placeholder="password"
+      class="bg-transparent border-2 border-gray-300 rounded-md"
+      name="password"
+      id="password"
+    /><button id="submit" class="rounded-md bg-red-400 text-white px-2 py-1">
+      Zapisz
+    </button>
+  </form>
+  <table class="border-collapse border border-gray-500 w-full">
+    <thead>
+      <tr class="text-blue-500">
+        <th class="border border-gray-500 px-2 py-1">LP</th>
+        <th class="border border-gray-500 px-2 py-1">Login</th>
+        <th class="border border-gray-500 px-2 py-1">Password</th>
+      </tr>
+    </thead>
+    <tbody>
+      {{#if users.length}}
+        {{#each users}}
+          <tr>
+            <td class="border border-gray-500 px-2 py-1">{{@index}}</td>
+            <td class="border border-gray-500 px-2 py-1">{{this.login}}</td>
+            <td class="border border-gray-500 px-2 py-1">{{this.password}}</td>
+          </tr>
+        {{/each}}
+      {{else}}
+        <tr>
+          <td colspan="3" class="text-center py-4 text-gray-400">No users</td>
+        </tr>
+      {{/if}}
+    </tbody>
+  </table>
+</div>
+
+<script>
+  const guzior = document.querySelector("#submit"); const loginBtn =
+  document.querySelector("#login"); const passwordBtn =
+  document.querySelector("#password"); guzior.onclick = (e) => {
+  e.preventDefault(); const data = JSON.stringify({ login: loginBtn.value,
+  password: passwordBtn.value, }); const options = { method: "POST", headers: {
+  "Content-Type": "application/json", }, body: data, }; fetch("/addUser",
+  options).catch((error) => console.log(error)); };
+</script>

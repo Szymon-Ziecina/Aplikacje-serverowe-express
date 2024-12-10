@@ -127,3 +127,10 @@ app.get("/handleRadio", (req, res) => {
   }
   res.render("radio2.hbs", context);
 });
+
+// JSON data
+
+app.get("/jsonData", (req, res) => {
+  const context = require("./data/data.json");
+  res.render("json.hbs", context);
+});

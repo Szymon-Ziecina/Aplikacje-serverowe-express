@@ -1,0 +1,59 @@
+<h1 class="text-3xl font-bold underline">{{subject}}</h1>
+
+<h2 class="text-2xl text-gray-500 underline">
+  wyświetlanie całej tablicy jedno lub dwu-wymiarowej
+</h2>
+
+<div class="mt-5 flex flex-col gap-2">
+  <h3 class="text-xl bg-gray-300 p-2 rounded text-blue-500">
+    {{langs}}
+  </h3>
+  <h3 class="text-xl bg-gray-300 p-2 rounded text-blue-500">
+    {{digits}}
+  </h3>
+</div>
+
+<h2 class="text-2xl text-gray-500 underline">
+  pobranie elementu teblicy jedno lub dwu-wymiarowej
+</h2>
+
+<div class="mt-5 flex flex-col gap-2">
+  <h3 class="text-xl bg-gray-300 p-2 rounded text-blue-500">
+    {{countries.[0]}}
+  </h3>
+  <h3 class="text-xl bg-gray-300 p-2 rounded text-blue-500">
+    {{digits.[0].[1]}}
+  </h3>
+</div>
+
+<h2 class="text-2xl text-gray-500 underline">
+  iteracja przez tablice
+</h2>
+
+<div class="mt-5 flex flex-col gap-2">
+    {{#each countries}}
+  <h3 class="text-xl bg-gray-300 p-2 rounded text-blue-500">
+    {{@index}} - {{this}}
+  </h3>
+  {{/each}}
+</div>
+
+<h2 class="text-2xl text-gray-500 underline">
+  iteracja przez obiekt
+</h2>
+
+<div class="mt-5 flex flex-col gap-2">
+    {{#each user}}
+  <h3 class="text-xl bg-gray-300 p-2 rounded text-blue-500">
+    {{@index}} - {{@key}} - {{this}}
+  </h3>
+  {{/each}}
+</div>
+
+<div class="mt-5 flex flex-col gap-2">
+    {{#each books}}
+  <h3 class="text-xl bg-gray-300 p-2 rounded text-blue-500">
+    {{@index}} - {{title}}
+  </h3>
+  {{/each}}
+</div>

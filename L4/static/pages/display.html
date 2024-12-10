@@ -29,6 +29,8 @@
 
         fd.append("file", imgInput.files[0]);
 
+        console.log(imgInput.files[0]);
+
         const body = fd;
 
         fetch("/uploadFile", { method: "post", body })
